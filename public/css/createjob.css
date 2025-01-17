@@ -1,0 +1,145 @@
+body{
+   
+    font-family: Arial, Helvetica, sans-serif;
+}
+.wrapper{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 80%;             
+}
+.signupBox{
+    
+    display: block;
+    width: 280px;
+}
+
+.formBlock{
+    margin-bottom: 10px;
+}
+
+button{
+    display: block;
+    padding: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: white;
+    border-radius: 4px;
+    border-color: black;
+    margin-bottom: 10px;
+    border-width: 1px;
+    width: 200px;
+    box-sizing: border-box;
+    font-size: 16px;
+
+}
+select{
+    font-size: 16px;
+    display: block;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-width: 1px;
+    border-radius: 4px;
+    border-color: black;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 400px;
+    box-sizing: border-box;
+}
+button:hover{
+    cursor: pointer;
+}
+input{
+    font-size: 16px;
+    display: block;
+    margin-bottom: 10px;
+    padding: 8px;
+    border-width: 1px;
+    border-radius: 4px;
+    border-color: black;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 400px;
+    box-sizing: border-box;
+}
+
+.imageWrapper{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+}
+
+a{
+    font-size: 14px;
+}
+a:hover{
+    cursor: pointer;
+}
+
+
+.nav-wrapper{
+padding: 20px;
+display: flex;
+max-width: 830px;
+width: 100%;
+justify-content:space-between;
+
+
+}
+
+.logo{
+    width: 64px;
+    height: 64px;
+}
+
+.navbar{
+    border-color: black;
+    border-width: 1px;
+    border-bottom: solid;
+    justify-content: center;
+    display: flex;
+    min-width: 100%;
+}
+.right-nav{
+    display: flex;
+    align-items: center;
+    
+    justify-content:space-between;
+
+}
+.button{
+    font-size: 16px;
+    font-weight: 550;
+    color: black;
+    text-decoration: none;
+    margin: 8px;
+    padding: 8px;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+.button:hover{
+    color: white;
+    background-color: black;
+
+}
+
+@media (max-width: 460px) {
+    .signupBox {
+        width: 100%;
+    }
+    .imageWrapper{
+        display: none;
+    }
+}
+@media (max-width: 300px) {
+    .left-nav{
+        display: none;
+    }
+    .right-nav{
+     width: 100%;
+    }
+    
+}

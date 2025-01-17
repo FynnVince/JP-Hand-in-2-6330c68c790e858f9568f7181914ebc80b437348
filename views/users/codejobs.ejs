@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Listings</title>
+    <link rel="stylesheet" href="/css/createjob.css">
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-wrapper">
+        <div class="left-nav">
+          <a href="/about-us.html"
+            ><img src="/images/mdi_university.svg" alt="Logo" class="logo"
+          /></a>
+        </div>
+        <div class="right-nav">
+          <a href="/users/login" class="button">Login</a>
+          <a href="/users/signup" class="button">Signup</a>
+          <a href="/users/codejobs"class="button">Jobs</a>
+        </div>
+      </div>
+    </nav>
+
+    <div> 
+      <form action="/users/codejobs" method="GET">
+        <!-- Funding Stage Filter -->
+        <label for="fundingStage">Funding Stage:</label>
+        <select id="fundingStage" name="fundingStage">
+            <option value="">Any</option>
+            <option value="Seed">Seed</option>
+            <option value="Series-A">Series-A</option>
+            <option value="Series-B">Series-B</option>
+            <option value="Series-C">Series-C</option>
+            <option value="Series-D+">Series-D+</option>
+            <option value="IPO">IPO</option>
+        </select>
+    
+        <!-- Industry Filter -->
+        <label for="industry">Industry:</label>
+        <select id="industry" name="industry">
+          <option value=""></option>
+        <% industries.forEach(function(industry) { %>
+            <option value="<%= industry %>"><%= industry %></option>
+        <% }); %>
+        </select>
+    
+        <!-- Team Size Filter -->
+        <label for="teamsize">Team Size:</label>
+        <select id="teamsize" name="teamsize">
+            <option value="">Any</option>
+            <option value="1-10">1-10</option>
+            <option value="11-30">11-30</option>
+            <option value="31-50">31-50</option>
+            <option value="51-100">51-100</option>
+            <option value="100+">100+</option>
+        </select>
+    
+       
+    
+        <!-- Submit Button -->
+        <button type="submit">Apply Filters</button>
+    </form>
+          
+    </div>
+
+    <% if (allJobsAndCompanys.length > 0) { %>
+    <ul>
+      <% allJobsAndCompanys.forEach(function(jobAndCompany) { %>
+        
+      <li>
+        <h2><%= jobAndCompany.job.jobTitle %></h2>
+        <a href="/users/codejobs/<%= jobAndCompany.company._id %>"><p><strong>Company:</strong> <%= jobAndCompany.company.name %></p></a>
+        <p><strong>Description:</strong> <%= jobAndCompany.company.industry %></p>
+        <p><strong>Teamsize:</strong> <%= jobAndCompany.company.teamsize %></p>
+        <p><strong>compensation:</strong> <%= jobAndCompany.job.compensation %>€</p>
+        <p><strong>Funding Stage:</strong> <%= jobAndCompany.company.fundingStage %></p>
+        <p><a href="<%= jobAndCompany.job.url %>">Apply Here</a></p>
+      </li>
+      <% }); %>
+    </ul>
+    <% } else { %>
+    <p>No jobs found.</p>
+    <% } %>
+    
+  </body>
+</html>

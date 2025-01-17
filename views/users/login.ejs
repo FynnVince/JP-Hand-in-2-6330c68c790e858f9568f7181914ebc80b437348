@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    
+    <div class="wrapper">
+    <div class="signupBox">
+        <div class="imageWrapper">
+        <img src="/images/mdi_university.svg" alt="Logo" class="logo">
+        </div>
+        <form onsubmit="return validateForm()" action="/users/api/login" method="post" class="formBlock">
+            <div id="error-message-email" style="color: red; padding: 0px;"></div>
+            <input type="text" id="email" name="email" placeholder="Email">
+            <div id="error-message-password" style="color: red; padding: 0px;"></div>
+            <input type="password" id="password" name="password" placeholder="Password">
+            <button type="submit">Login</button>
+        </form>
+        <a href="/users/signup">You don't have an account yet?</a>
+    </div>
+</div>
+
+<script>
+    function validateForm() {
+      const email = document.getElementById('email');
+      const errorMessageEmail = document.getElementById('error-message-email');
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const emailValue = email.value.trim();
+
+      const password = document.getElementById('password');
+      const errorMessagePassword = document.getElementById('error-message-password');
+      const PasswordValue = password.value.trim();
+
+      errorMessageEmail.textContent = '';
+      errorMessagePassword.textContent = '';
+
+      if (emailValue === '') {
+        errorMessageEmail.textContent = 'Email field must not be empty';
+        return false; 
+      }
+      if (!emailPattern.test(emailValue)) {
+        errorMessage.textContent = 'Please enter a valid email address.';
+        return false;
+      }
+
+      if (PasswordValue === '') {
+        errorMessagePassword.textContent = 'Password field must not be empty';
+        return false; 
+      }
+
+      if (PasswordValue.length < 8) {
+        errorMessagePassword.textContent = 'Password must be at least 8 characters long';
+        return false;
+      }
+
+      return true;
+    }
+</script>
+</body>
+</html>

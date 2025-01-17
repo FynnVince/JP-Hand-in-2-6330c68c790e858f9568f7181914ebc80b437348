@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Job</title>
+    <link rel="stylesheet" href="/css/createjob.css">
+</head>
+<body>
+    <body>
+        <nav class="navbar">
+          <div class="nav-wrapper">
+            <div class="left-nav">
+              <a href="/about-us.html"
+                ><img src="/images/mdi_university.svg" alt="Logo" class="logo"
+              /></a>
+            </div>
+            <div class="right-nav">
+              <a href="/users/login" class="button">Login</a>
+              <a href="/users/signup" class="button">Signup</a>
+              <a href="/users/codejobs"class="button">Jobs</a>
+            </div>
+          </div>
+        </nav>
+        
+
+    <form action="/users/api/updateCompanyData" method="post" id="jobcreator">
+
+        <label for="name">Your Company: </label>
+        <input name="name" type="text" id="name" value="<%= companyData.name %>">
+
+        <label for="industry">Your industry: </label>
+        <input name="industry" type="text" id="industry" value="<%= companyData.industry %>">
+        
+        <label for="teamsize">Team Size:</label>
+        <select id="teamsize" name="teamsize">
+            <option value="<%= companyData.teamsize %>" disabled selected><%= companyData.teamsize %></option>
+            <option value="1-10">1-10</option>
+            <option value="11-30">11-30</option>
+            <option value="31-50">31-50</option>
+            <option value="51-100">51-100</option>
+            <option value="100+">100+</option>
+        </select>
+
+        <label for="fundingStage">Funding Stage:</label>
+        <select id="fundingStage" name="fundingStage">
+            <option value="<%= companyData.fundingStage %>" disabled selected><%= companyData.fundingStage %></option>
+            <option value="Seed">Seed</option>
+            <option value="Series-A">Series-A</option>
+            <option value="Series-B">Series-B</option>
+            <option value="Series-C">Series-C</option>
+            <option value="Series-D+">Series-D+</option>
+            <option value="IPO">IPO</option>
+        </select>
+        
+        <button type="submit">Update Company information</button>
+    </form>
+    <form action="/users/api/createJob" method="post" id="jobTitle">
+        <label for="jobTitle">JobTitle:</label>
+        <input name="jobTitle" type="text" id="jobTitle">
+        
+        <label for="jobDesc">Job Description</label>
+        <input name="jobDesc" type="text" id="jobDesc">
+        
+        <label for="compensation">Yearly compensation in €</label>
+        <input name="compensation" type="number" id="compensation">
+
+        <label for="employment">Who are you looking for?</label>
+        <select name="employment" id="employment">
+            <option value="Workingstudent">Werkstudent</option>
+            <option value="Intern">Intern</option>
+            <option value="Fulltime Employee">Fulltime employee</option>
+        </select>
+
+        <label for="url">url of your listing:</label>
+        <input name="url" type="text" id="url">
+
+        <button type="submit">Job Erstellen</button>
+    </form>
+
+    <% if (listings.length > 0) { %>
+        <ul>
+          <% listings.forEach(function(listing) { %>
+            
+          <li>
+            <form action="/users/api/deleteJob" method="post">
+                <input type="hidden" value="<%= listing._id %>" name="Id">
+                <button type="submit">Delete Job</button>
+            </form>
+            <h2><%= listing.jobTitle %></h2>
+            <p><strong>Job Description:</strong> <%= listing.jobDesc %></p>
+            <p><strong>Compensation:</strong> <%= listing.compensation %></p>
+            <p><strong>Employment:</strong> <%= listing.employment %></p>
+            <p><a href="<%= listing.url %>">Apply Here</a></p>
+          </li>
+          <% }); %>
+        </ul>
+        <% } else { %>
+        <p>You haven't created any jobs so far.</p>
+        <% } %>
+
+</body>
+</html>

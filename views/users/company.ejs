@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Listings</title>
+    <link rel="stylesheet" href="/css/createjob.css">
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-wrapper">
+        <div class="left-nav">
+          <a href="/about-us.html"
+            ><img src="/images/mdi_university.svg" alt="Logo" class="logo"
+          /></a>
+        </div>
+        <div class="right-nav">
+          <a href="/users/login" class="button">Login</a>
+          <a href="/users/signup" class="button">Signup</a>
+          <a href="/users/codejobs"class="button">Jobs</a>
+        </div>
+      </div>
+    </nav>
+
+    
+
+    <% if (companyData.name.length > 0) { %>
+    <ul>
+      
+        
+      <li>
+       
+        <p><strong>Company:</strong> <%= companyData.name %></p>
+        <p><strong>Description:</strong> <%= companyData.industry %></p>
+        <p><strong>Teamsize:</strong> <%= companyData.teamsize %></p>
+        <p><strong>Funding Stage:</strong> <%= companyData.fundingStage %></p>
+     
+      </li>
+
+    </ul>
+    <% } else { %>
+      <p>No company found.</p>
+      <% } %>
+    
+  </body>
+</html>
