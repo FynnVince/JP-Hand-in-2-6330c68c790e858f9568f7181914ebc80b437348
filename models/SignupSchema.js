@@ -6,7 +6,7 @@ const SignupSchema = new Schema({
       type: String,
       required: true,
       unique: true, 
-      validate: {
+      validate: { //The Validator was written with ChatGPT
         validator: function(v) {
           return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(v); 
         },

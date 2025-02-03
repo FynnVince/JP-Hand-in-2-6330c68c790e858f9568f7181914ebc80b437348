@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title></title>
     <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
@@ -25,7 +25,11 @@
 </div>
 
 <script>
+
+  // Client Side Javascript Feature
     function validateForm() {
+      
+      //Get Email and Password Values
       const email = document.getElementById('email');
       const errorMessageEmail = document.getElementById('error-message-email');
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,13 +41,13 @@
 
       errorMessageEmail.textContent = '';
       errorMessagePassword.textContent = '';
-
+      //Validate them based on the rules
       if (emailValue === '') {
         errorMessageEmail.textContent = 'Email field must not be empty';
         return false; 
       }
       if (!emailPattern.test(emailValue)) {
-        errorMessage.textContent = 'Please enter a valid email address.';
+        errorMessageEmail.textContent = 'Please enter a valid email address.';
         return false;
       }
 
