@@ -158,7 +158,7 @@ router.get("/codejobs", async (req, res) => {
     const industries = await fetchIndustires()
     console.log(`These are the industries: ${industries}`)
     res.render("users/codejobs", {
-      layout: false, 
+      layout: false,  
       allJobsAndCompanys,
       industries
     });
